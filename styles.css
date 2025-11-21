@@ -1,3 +1,15 @@
 *{
-    background: red;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.navigation-bar{
+    height: 44px;
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
+.navigation-list{
+    text-align: center;
+    padding-top: 10px;
 }
