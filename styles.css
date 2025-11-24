@@ -104,6 +104,29 @@ body {
     animation-iteration-count: infinite;
 }
 
+/* Individuelle snøfnugg-posisjoner og animasjonsverdier */
+.flake1  { left: 2%;  animation-duration: 7s;  animation-delay: 0s; }
+.flake2  { left: 7%;  animation-duration: 9s;  animation-delay: 2s; }
+.flake3  { left: 12%; animation-duration: 6s;  animation-delay: 1s; }
+.flake4  { left: 18%; animation-duration: 8s;  animation-delay: 3s; }
+.flake5  { left: 23%; animation-duration: 10s; animation-delay: 0.5s; }
+.flake6  { left: 28%; animation-duration: 7.5s; animation-delay: 1.5s; }
+.flake7  { left: 33%; animation-duration: 9.2s; animation-delay: 2.5s; }
+.flake8  { left: 38%; animation-duration: 6.8s; animation-delay: 0.8s; }
+.flake9  { left: 43%; animation-duration: 8.3s; animation-delay: 1.8s; }
+.flake10 { left: 48%; animation-duration: 7.1s; animation-delay: 2.3s; }
+
+.flake11 { left: 5%;  animation-duration: 11s; animation-delay: 4s; }
+.flake12 { left: 15%; animation-duration: 9.5s; animation-delay: 3.5s; }
+.flake13 { left: 25%; animation-duration: 10.2s;animation-delay: 5s; }
+.flake14 { left: 35%; animation-duration: 7.8s; animation-delay: 4.2s; }
+.flake15 { left: 45%; animation-duration: 9.9s; animation-delay: 3.1s; }
+.flake16 { left: 55%; animation-duration: 8.6s; animation-delay: 4.7s; }
+.flake17 { left: 65%; animation-duration: 11.3s;animation-delay: 3.8s; }
+.flake18 { left: 75%; animation-duration: 7.9s; animation-delay: 5.3s; }
+.flake19 { left: 85%; animation-duration: 9.4s; animation-delay: 4.4s; }
+.flake20 { left: 95%; animation-duration: 10.8s;animation-delay: 3.6s; }
+
 /* Animasjonen som får snøen til å falle */
 @keyframes fall {
     0% {
@@ -203,6 +226,7 @@ body {
 .feature-header h3 {
     font-size: 1.6rem;
     margin: 0;
+    text-align: center;
     font-weight: 700;
 }
 
