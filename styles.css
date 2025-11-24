@@ -13,6 +13,7 @@ body {
     margin-top: 0;
 }
 
+
 /* Lager fading fra bildet til hvitt */
 .header-container::after {
     content: "";
