@@ -5,46 +5,6 @@ body {
     background: #000;
 }
 
-/* NAVIGATION */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(17, 17, 17, 0.8);
-    padding: 15px 30px;
-    color: white;
-    z-index: 1000;
-    backdrop-filter: blur(4px);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 35px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: 0.2s ease;
-}
-
-.nav-links li a:hover {
-    opacity: 0.7;
-}
-
 /* HEADER / HERO */
 .header-container {
     position: relative;
@@ -53,11 +13,23 @@ body {
     margin-top: 0;
 }
 
+.header-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px; /* juster hvor langt fade skal gå */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #ffffff 100%);
+    z-index: 4; /* over bilde, men under snø og tittel */
+    pointer-events: none;
+}
+
 .background-image {
     width: 100%;
     display: block;
     position: relative;
-    z-index: 1;      /* nederst i headeren */
+    z-index: 1; /* nederst i headeren */
 }
 
 /* HERO TITLE */
@@ -70,17 +42,17 @@ body {
     font-size: 4.5rem;
     font-weight: 800;
     text-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
-    z-index: 5;      /* over snø og bilde */
+    z-index: 5; /* over snø og bakgrunnsbilde */
     letter-spacing: 3px;
 }
 
-/* SNØFRESER-ANIMASJON */
+/* SNØFRESER-ANIMASJON (øverst i header) */
 .robot-snøfreser {
     position: absolute;
     bottom: 5%;
     left: 0;
     width: 22%;
-    z-index: 6;      /* helt på topp i headeren */
+    z-index: 6; /* helt på topp i headeren */
     transform: scaleX(1);
     animation: driveBackAndForth 14s linear infinite;
 }
@@ -104,19 +76,151 @@ body {
     }
 }
 
-
-
-/* SEKSJONER UNDER HERO */
-.section {
-    padding: 80px 30px;
-    background: #f4f4f4;
-    border-top: 1px solid #ddd;
+/* SNØFALL */
+.snow {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; /* over bakgrunnsbilde, under tittel + robot */
+    overflow: hidden;
 }
 
-.section:nth-of-type(even) {
-    background: #e9e9e9;
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: white;
+    font-size: 1rem;
+    opacity: 0.9;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
-.section h2 {
-    margin-top: 0;
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(120vh) translateX(30px);
+    }
+}
+
+/* INTRO-SEKSJON UNDER HERO */
+.intro-section {
+    padding: 70px 30px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.intro-title {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #111;
+    letter-spacing: 2px;
+}
+
+.intro-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.intro-image {
+    width: 280px;
+}
+
+.intro-text {
+    max-width: 550px;
+    text-align: left;
+}
+
+.intro-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* FEATURE SECTION (2 KLIKKBARE KORT) */
+.feature-section {
+    padding: 80px 30px 100px;
+    background: #ffffff;
+}
+
+.feature-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+/* Hvert kort */
+.feature-card {
+    background: #f9f9f9;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+}
+
+/* header som kan klikkes */
+.feature-header {
+    display: block;
+    cursor: pointer;
+}
+
+.feature-header h3 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+/* skjuler checkbox */
+.feature-card input {
+    display: none;
+}
+
+/* innhold som åpnes/lukkes */
+.feature-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+/* når kortet er åpnet */
+.feature-card input:checked ~ .feature-content {
+    max-height: 300px;
+    margin-top: 15px;
+}
+
+/* RESPONSIVT */
+@media (max-width: 800px) {
+    .intro-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro-text {
+        text-align: center;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
 }
