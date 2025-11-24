@@ -1,11 +1,11 @@
-/* GENERELT */
+/* Setter grunnstil for hele nettsiden */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #000;
 }
 
-/* HEADER / HERO */
+/* Wrapper for hero-delen med bildet */
 .header-container {
     position: relative;
     width: 100%;
@@ -13,26 +13,28 @@ body {
     margin-top: 0;
 }
 
+/* Lager fading fra bildet til hvitt */
 .header-container::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 180px; /* juster hvor langt fade skal gå */
+    height: 180px;
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #ffffff 100%);
-    z-index: 4; /* over bilde, men under snø og tittel */
+    z-index: 4;
     pointer-events: none;
 }
 
+/* Selve bakgrunnsbildet i headeren */
 .background-image {
     width: 100%;
     display: block;
     position: relative;
-    z-index: 1; /* nederst i headeren */
+    z-index: 1;
 }
 
-/* HERO TITLE */
+/* Stor tittel over hero-bildet */
 .hero-title {
     position: absolute;
     top: 20%;
@@ -42,21 +44,22 @@ body {
     font-size: 4.5rem;
     font-weight: 800;
     text-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
-    z-index: 5; /* over snø og bakgrunnsbilde */
+    z-index: 5;
     letter-spacing: 3px;
 }
 
-/* SNØFRESER-ANIMASJON (øverst i header) */
+/* Animasjon av snøfreseren som kjører over bildet */
 .robot-snøfreser {
     position: absolute;
     bottom: 5%;
     left: 0;
     width: 22%;
-    z-index: 6; /* helt på topp i headeren */
+    z-index: 6;
     transform: scaleX(1);
     animation: driveBackAndForth 14s linear infinite;
 }
 
+/* Keyframes som styrer frem-og-tilbake-bevegelsen */
 @keyframes driveBackAndForth {
     0% {
         left: -25%;
@@ -76,7 +79,7 @@ body {
     }
 }
 
-/* SNØFALL */
+/* Container som holder alle snøfnugg */
 .snow {
     pointer-events: none;
     position: absolute;
@@ -84,10 +87,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 3; /* over bakgrunnsbilde, under tittel + robot */
+    z-index: 3;
     overflow: hidden;
 }
 
+/* Individuelle snøfnugg som animeres nedover */
 .snowflake {
     position: absolute;
     top: -10px;
@@ -99,6 +103,7 @@ body {
     animation-iteration-count: infinite;
 }
 
+/* Animasjonen som får snøen til å falle */
 @keyframes fall {
     0% {
         transform: translateY(0) translateX(0);
@@ -108,13 +113,14 @@ body {
     }
 }
 
-/* INTRO-SEKSJON UNDER HERO */
+/* Seksjonen under header med bilde + tekst */
 .intro-section {
     padding: 70px 30px;
     background: #ffffff;
     text-align: center;
 }
 
+/* Tittel for introduksjonsseksjonen */
 .intro-title {
     font-size: 3rem;
     margin-bottom: 40px;
@@ -122,6 +128,7 @@ body {
     letter-spacing: 2px;
 }
 
+/* Flex-container for bilde + tekst */
 .intro-content {
     display: flex;
     justify-content: center;
@@ -131,31 +138,36 @@ body {
     margin: 0 auto;
 }
 
+/* Snøfreser-bilde i intro */
 .intro-image {
     width: 280px;
 }
 
+/* Tekstområde i intro */
 .intro-text {
     max-width: 550px;
     text-align: left;
 }
 
+/* Overskrift i intro-teksten */
 .intro-text h3 {
     font-size: 1.8rem;
     margin-bottom: 10px;
 }
 
+/* Paragraftekst i intro */
 .intro-text p {
     font-size: 1rem;
     line-height: 1.6;
 }
 
-/* FEATURE SECTION (2 KLIKKBARE KORT) */
+/* Seksjon som inneholder de to klikkbare kortene */
 .feature-section {
     padding: 80px 30px 100px;
     background: #ffffff;
 }
 
+/* Grid-layout for to kolonner */
 .feature-grid {
     max-width: 1100px;
     margin: 0 auto;
@@ -164,7 +176,7 @@ body {
     gap: 35px;
 }
 
-/* Hvert kort */
+/* Individuelt kort i features-seksjonen */
 .feature-card {
     background: #f9f9f9;
     border-radius: 14px;
@@ -174,42 +186,44 @@ body {
     position: relative;
 }
 
+/* Hover-effekt for kort */
 .feature-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 25px rgba(0,0,0,0.12);
 }
 
-/* header som kan klikkes */
+/* Klikkbar header i hvert kort */
 .feature-header {
     display: block;
     cursor: pointer;
 }
 
+/* Tittel i kort */
 .feature-header h3 {
     font-size: 1.6rem;
     margin: 0;
     font-weight: 700;
 }
 
-/* skjuler checkbox */
+/* Skjuler checkbox som styrer åpning/lukking */
 .feature-card input {
     display: none;
 }
 
-/* innhold som åpnes/lukkes */
+/* Teksten inni kortet som skjules/vises */
 .feature-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
 }
 
-/* når kortet er åpnet */
+/* Når kortet åpnes via checkbox */
 .feature-card input:checked ~ .feature-content {
     max-height: 300px;
     margin-top: 15px;
 }
 
-/* RESPONSIVT */
+/* Mobiltilpasning */
 @media (max-width: 800px) {
     .intro-content {
         flex-direction: column;
